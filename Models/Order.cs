@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace InventoryManagement.Models
 {
@@ -16,10 +17,10 @@ namespace InventoryManagement.Models
 
         public DateTime Date { get; set; }
 
-    
+        [JsonIgnore]
         public Employee? Employee { get; set; }
 
-        
+        [JsonIgnore]
         public Stock? Stock { get; set; }
 
     }

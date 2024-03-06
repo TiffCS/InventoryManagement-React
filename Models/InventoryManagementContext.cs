@@ -1,8 +1,10 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace InventoryManagement.Models
 {
-public class InventoryManagementContext : DbContext
+public class InventoryManagementContext : IdentityDbContext<IdentityUser>
     {
         public InventoryManagementContext(DbContextOptions<InventoryManagementContext> options) : base(options)
         {

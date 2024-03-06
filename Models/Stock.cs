@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace InventoryManagement.Models
 {
@@ -12,7 +13,7 @@ namespace InventoryManagement.Models
 
         public int ProductId { get; set; }
 
-    
+        [JsonIgnore]
         public List<Order>? Orders { get; set; }
 
     }
