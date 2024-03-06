@@ -286,3 +286,4 @@
 /Users/tiffanychambers-samuels/Desktop/InventoryManagement/bin/Debug/net8.0/BouncyCastle.Cryptography.dll
 /Users/tiffanychambers-samuels/Desktop/InventoryManagement/bin/Debug/net8.0/MailKit.dll
 /Users/tiffanychambers-samuels/Desktop/InventoryManagement/bin/Debug/net8.0/MimeKit.dll
+/Users/tiffanychambers-samuels/Desktop/InventoryManagement/bin/Debug/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
