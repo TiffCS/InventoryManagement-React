@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace InventoryManagement.Models
 {
@@ -18,7 +19,7 @@ namespace InventoryManagement.Models
 
         public int? SupplierId { get; set; }
 
-    
+        [JsonIgnore]
         public List <Stock>? Stocks { get; set; } 
 
     }
