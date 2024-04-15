@@ -8737,11 +8737,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/tiffanychambers-samuels/Desktop/InventoryManagement/InventoryManagement.csproj",
+      "projectUniqueName": "/Users/tiffanychambers-samuels/Desktop/InventoryManagement 2/InventoryManagement.csproj",
       "projectName": "InventoryManagement",
-      "projectPath": "/Users/tiffanychambers-samuels/Desktop/InventoryManagement/InventoryManagement.csproj",
+      "projectPath": "/Users/tiffanychambers-samuels/Desktop/InventoryManagement 2/InventoryManagement.csproj",
       "packagesPath": "/Users/tiffanychambers-samuels/.nuget/packages/",
-      "outputPath": "/Users/tiffanychambers-samuels/Desktop/InventoryManagement/obj/",
+      "outputPath": "/Users/tiffanychambers-samuels/Desktop/InventoryManagement 2/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/tiffanychambers-samuels/.nuget/NuGet/NuGet.Config"

@@ -19,7 +19,7 @@ namespace InventoryManagement.Controllers
 
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Admin")]
+    
     public class AccountController : ControllerBase
     {
         private readonly UserManager<IdentityUser> _userManager;

@@ -12,7 +12,7 @@ namespace InventoryManagement.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Admin")]
+    
     public class RolesController : ControllerBase
     {
         private readonly RoleManager<IdentityRole> _roleManager;
@@ -42,6 +42,7 @@ namespace InventoryManagement.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> CreateRole([FromBody] string roleName)
         {
             var role = new IdentityRole(roleName);
@@ -54,6 +55,7 @@ namespace InventoryManagement.Controllers
         }
 
         [HttpPut]
+        [Authorize]
         public async Task<IActionResult> UpdateRole([FromBody] UpdateRoleModel model)
         {
             var role = await _roleManager.FindByIdAsync(model.RoleId);
@@ -71,7 +73,8 @@ namespace InventoryManagement.Controllers
         }
 
         [HttpDelete]
-        public async Task<IActionResult> DeleteRole(string roleId)
+        [Authorize]
+        public async Task<IActionResult> DeleteRole([FromBody] string roleId)
         {
             var role = await _roleManager.FindByIdAsync(roleId);
             if (role == null)
@@ -87,6 +90,7 @@ namespace InventoryManagement.Controllers
         }
 
         [HttpPost("assign-role-to-user")]
+        [Authorize]
         public async Task<IActionResult> AssignRoleToUser([FromBody] AssignRoleModel model)
         {
             var user = await _userManager.FindByIdAsync(model.UserId);
