@@ -61,7 +61,7 @@ const Registration = () => {
         // Navigation  to login page if successful or error is displayed
         try {
             await axios.post(`${API_BASE_URL}account/register`, {email:email, password:password})
-            navigate('/login');
+            navigate('/home');
         } catch(error) {
             if (!error.response){
                 setErrMsg('No response from server.')
@@ -140,7 +140,7 @@ const Registration = () => {
                     Register
                 </button>
                 <p>
-                    Already Registered? <Link to ="/login">Login</Link>
+                    Already Registered? <Link to ="/">Home</Link>
                 </p>
             </form>
         </section>   
