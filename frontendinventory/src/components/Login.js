@@ -1,14 +1,23 @@
-import { useState, useEffect, useContext } from "react";
-import AuthContext from "../authContext/AuthProvider";
-import { useNavigate, Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import useAuthorization from "../hooks/useAuthorization";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import axios from 'axios';
 import { API_BASE_URL } from '../apiConfig';
+import { jwtDecode} from "jwt-decode";
+
 
 
 const Login = () => {
 
         // Sets state for authenitication 
-        const {setAuth} = useContext(AuthContext);
+        const {setAuth} = useAuthorization();
+
+         // Navigation to endpoints
+         const navigate= useNavigate();
+
+         // Allows user to navigate to a link once authorized
+         const location= useLocation();
+         const from = location.state?.from?.pathname || "/";
 
         // State for email and password 
         const[email, setEmail] = useState('');
@@ -20,8 +29,7 @@ const Login = () => {
         setErrMsg('');
         }, [email, password])
 
-        // Navigation to endpoints
-        const navigate=useNavigate()
+       
 
         // Actions to be performed when when logging in
         const handleLogin = async (e) => {
@@ -39,9 +47,12 @@ const Login = () => {
                 // })
                 console.log(JSON.stringify(response?.data));
                 const token = JSON.stringify(response?.data?.token);
-                //console.log(token);
-                setAuth({email, password, token});
-                navigate('/home');
+                const decoded = jwtDecode(token);
+                console.log(decoded);
+                const tokenRoles = decoded['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
+                console.log(tokenRoles);
+                setAuth({email, password, token, tokenRoles});
+                navigate(from, {replace:true});
                 console.log(token);
                 
             } catch(error){
