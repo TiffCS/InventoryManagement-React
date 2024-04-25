@@ -108,7 +108,7 @@ namespace InventoryManagement.Controllers
             var expires = DateTime.Now.AddHours(Convert.ToDouble(_configuration["Jwt:ExpireHours"]));
             var token = new JwtSecurityToken(
             _configuration["Jwt:Issuer"],
-            _configuration["Jwt:Issuer"],
+            _configuration["Jwt:Audience"],
             claims,
             expires: expires,
             signingCredentials: creds

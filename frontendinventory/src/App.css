@@ -1,14 +1,30 @@
+.navbar-container {
+  width: 100%;
+  background-color: #ecebed;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+/* Adjust navbar brand and logout button styles */
+.navbar-brand {
+  font-size: 1.5rem; /* Example font size */
+}
+
+.btn-logout {
+  padding: 0.5rem 1rem;
+  font-size: 1rem; /* Example font size */
+}
+
 .App {
-  text-align: center;
   background-color: #ecebed;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
-}
+  color: black;
+} 
 
 label,
 button {
@@ -21,22 +37,48 @@ button {
 
 section {
   width: 100%;
-  max-width: 420px;
-  min-height: 400px;
+  min-height: 100vh; /* Set height to viewport height */
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
   padding: 1rem;
   background-color: rgba(26, 26, 27, 0.4);
 }
 
 form {
+  width: 100%;
+  max-width: 400px;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  flex-grow: 1;
-  padding-bottom: 1rem;
+  align-items: center;
+  padding: 1rem;
+  background-color: rgba(26, 26, 27, 0.4);
 }
+
+.form-control {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.btn-primary {
+  width: 100%;
+}
+
+h1 {
+  color: rgb(2, 2, 2); /* Example color for heading */
+}
+
+.form-link {
+  color: white; /* Example color for links */
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+}
+
+.form-link:hover {
+  text-decoration: underline; /* Example hover effect for links */
+}
+
 
 .instructions {
   font-size: 0.75rem;
@@ -88,4 +130,176 @@ form {
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
+}
+
+.card-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; /* Change to space-around to evenly distribute the cards */
+  margin-top: 20px; /* Add margin between navbar and cards */
+}
+
+.card-container {
+  width: 45%;
+  margin-bottom: 20px;
+  border-radius: 1rem;
+  box-shadow: 0px 10px 8px #999;
+  background-color: white;
+  max-width: 400px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-img {
+  width: 100%;
+  height: 200px; /* Set a fixed height for image */
+  object-fit: cover; /* Ensure image covers the container */
+  border-radius: 1.0rem 1.0rem 0 0;
+}
+
+.card-title,
+.card-description {
+    text-align: center;
+}
+
+.card-description {
+  margin: 0;
+  padding: 10px; /* Add padding to the description */
+  height: 100px; /* Set a fixed height for description */
+}
+
+
+.card-btn {
+  width: 100%;
+  margin-top: auto; /* Align button to the bottom */
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  background-color: #2563eb;
+  color: white;
+  text-decoration: none;
+}
+
+.table-responsive {
+  overflow-x: auto; /* Allow horizontal scrolling on smaller screens */
+}
+
+.table {
+  width: 100%; /* Set table width to 100% */
+  margin-bottom: 1rem; /* Add some bottom margin for spacing */
+}
+
+.table th,
+.table td {
+  padding: 0.75rem; /* Add padding to table cells */
+  vertical-align: top; /* Align content to the top */
+}
+
+.add-item-form {
+  width: 100%;
+  max-width: 400px; /* Set the maximum width of the form */
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.add-item-form h2 {
+  text-align: center;
+}
+
+.add-item-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-item-form label {
+  margin-bottom: 10px;
+}
+
+.add-item-form input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.add-item-form button {
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.add-item-form button[type="submit"] {
+  background-color: #28a745;
+}
+
+.add-item-form button[type="button"] {
+  background-color: #dc3545;
+}
+
+.add-item-form button:hover {
+  opacity: 0.8;
+}
+
+.employee-management {
+  display: flex;
+  flex-direction: column;
+}
+
+.employee-form {
+  margin-bottom: 20px;
+}
+
+.create-employee-button {
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .card-container {
+    width: 90%; /* Adjust width for smaller screens */
+  }
+  .navbar-brand {
+    font-size: 1.2rem;
+  }
+  .table-responsive {
+    overflow-x: auto;
+  }
+  .add-item-form {
+    padding: 15px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .card-img {
+    height: 150px; /* Adjust image height for smaller screens */
+  }
+  
+  .card-description {
+    height: 80px; /* Adjust description height for smaller screens */
+  }
+
+  .navbar-brand {
+    font-size: 1rem;
+  }
+  .table-responsive {
+    overflow-x: auto;
+  }
+  .add-item-form {
+    padding: 10px;
+  }
+
+  add-item-form input,
+  .add-item-form button {
+    padding: 8px;
+  }
+
+  employee-management {
+    padding: 0 10px; /* Adjust padding for smaller screens */
+  }
 }
