@@ -46,7 +46,7 @@ namespace InventoryManagement.Controllers
         // PUT: api/Orders/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        [Authorize(Roles="Purchasing,Admin")]
+        
         public async Task<IActionResult> PutOrder(int id, Order order)
         {
             if (id != order.Id)
@@ -78,7 +78,7 @@ namespace InventoryManagement.Controllers
         // POST: api/Orders
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        [Authorize(Roles="Purchasing,Admin")]
+        
         public async Task<ActionResult<Order>> PostOrder(Order order)
         {
             _context.Orders.Add(order);
@@ -89,7 +89,7 @@ namespace InventoryManagement.Controllers
 
         // DELETE: api/Orders/5
         [HttpDelete("{id}")]
-        [Authorize(Roles="Purchasing,Admin")]
+        
         public async Task<IActionResult> DeleteOrder(int id)
         {
             var order = await _context.Orders.FindAsync(id);

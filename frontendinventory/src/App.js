@@ -9,6 +9,7 @@ import Admin from './components/Admin';
 import Users from './components/Users';
 import AppLayout from './components/AppLayout';
 import Unauthorized from './components/Unauthorized';
+import Employees from './components/Employees/Employee';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           {/* protected routes*/}
             <Route element={<RequireAuth allowedRoles={["Admin"]} />}>
               <Route path="admin" element={<Admin/>}/>
+              <Route path="employee" element={<Employees/>}/>
             </Route>
             <Route element={<RequireAuth allowedRoles={["Admin","Purchasing","Inventory"]} />}>
               <Route path="users" element={<Users/>}/>
