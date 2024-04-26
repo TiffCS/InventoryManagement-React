@@ -31,7 +31,7 @@ const Users = () => {
                     <p className="card-description">
                         This section is for all products within the system.
                     </p>
-                    <button onClick={() => navigate("/")}className="card-btn">Click Here</button>
+                    <button onClick={() => navigate("/product")}className="card-btn">Click Here</button>
                 </div> 
                 <div className="card-container">
                     <img src={inventoryLogo} alt="inventory logo" className="card-img" />
@@ -39,7 +39,7 @@ const Users = () => {
                     <p className="card-description">
                         This section is for the stock of products currently in the system.
                     </p>
-                    <button onClick={() => navigate("/")}className="card-btn">Click Here</button>
+                    <button onClick={() => navigate("/stock")}className="card-btn">Click Here</button>
                 </div>
                 <div className="card-container">
                     <img src={ordersLogo} alt="orders logo" className="card-img" />
@@ -47,7 +47,7 @@ const Users = () => {
                     <p className="card-description">
                         This section is for all orders for inventory.
                     </p>
-                    <button onClick={() => navigate("/")}className="card-btn">Click Here</button>
+                    <button onClick={() => navigate("/order")}className="card-btn">Click Here</button>
                 </div>
                 <div className="card-container">
                     <img src={suppliersLogo} alt="suppliers logo" className="card-img" />
@@ -55,7 +55,7 @@ const Users = () => {
                     <p className="card-description">
                         This section is for all suppliers in the system.
                     </p>
-                    <button onClick={() => navigate("/")}className="card-btn">Click Here</button>
+                    <button onClick={() => navigate("/supplier")}className="card-btn">Click Here</button>
                 </div>
             </div>
         </div>
