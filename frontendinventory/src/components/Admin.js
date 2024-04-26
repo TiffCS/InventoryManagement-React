@@ -3,14 +3,17 @@ import usersLogo from "./logos/usersLogo.jpeg";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { API_BASE_URL } from "../apiConfig";
+import useAuthorization  from '../hooks/useAuthorization';
 
 const Admin = () => {
 
     const navigate = useNavigate()
+    const { logout } = useAuthorization();
 
     const handleLogout = async(e) => {
         e.preventDefault();
         await axios.post(`${API_BASE_URL}account/logout`)
+        logout(); 
         navigate('/');
     }
 
