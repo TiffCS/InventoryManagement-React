@@ -10,6 +10,13 @@ import Users from './components/Users';
 import AppLayout from './components/AppLayout';
 import Unauthorized from './components/Unauthorized';
 import Employees from './components/Employees/Employee';
+import Products from './components/Products/Product';
+import Stocks from './components/Stocks/Stock';
+import Orders from './components/Orders/Order';
+import Suppliers from './components/Suppliers/Supplier';
+import SupplierDetails from './components/Suppliers/SupplierDetails';
+import AddSupplierForm from './components/Suppliers/AddSupplierForm';
+
 
 function App() {
   return (
@@ -27,6 +34,12 @@ function App() {
             <Route element={<RequireAuth allowedRoles={["Admin"]} />}>
               <Route path="admin" element={<Admin/>}/>
               <Route path="employee" element={<Employees/>}/>
+              <Route path="product" element={<Products/>}/>
+              <Route path="stock" element={<Stocks/>}/>
+              <Route path="order" element={<Orders/>}/>
+              <Route path="supplier" element={<Suppliers/>}/>
+              <Route path="/supplier/:id" element={<SupplierDetails />} />
+              <Route path = "/supplier/add" element = {<AddSupplierForm/>}/>
             </Route>
             <Route element={<RequireAuth allowedRoles={["Admin","Purchasing","Inventory"]} />}>
               <Route path="users" element={<Users/>}/>
@@ -39,3 +52,4 @@ function App() {
 }
 
 export default App;
+

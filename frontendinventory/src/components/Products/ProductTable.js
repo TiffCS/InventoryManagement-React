@@ -7,20 +7,28 @@ const ProductTable = ({ products, handleEdit, handleDelete }) => {
           <thead>
               <tr>
               <th scope='col'>ID</th>
-              <th scope ='col'>Name</th>
-              <th scope = 'col'>Email</th>
+              <th scope ='col'>Category</th>
+              <th scope = 'col'>Brand</th>
+              <th scope = 'col'>Name</th>
+              <th scope = 'col'>Size</th>
+              <th scope = 'col'>Cost£</th>
+              <th scope = 'col'>Supplier ID</th>
               <th scope = 'col'>Actions</th>
               </tr>
           </thead>
           <tbody>
-              {employees.map((employee) => (
-              <tr key={employee.id}>
-              <td>{employee.id}</td>
-              <td>{employee.name}</td>
-              <td>{employee.email}</td>
+              {products.map((product) => (
+              <tr key={product.id}>
+              <td>{product.id}</td>
+              <td>{product.category}</td>
+              <td>{product.brand}</td>
+              <td>{product.name}</td>
+              <td>{product.size}</td>
+              <td>{product.unitCost}</td>
+              <td>{product.supplierId}</td>
               <td>
-              <button onClick={() => handleEdit(employee.id)}>Edit</button>
-              <button onClick={() => handleDelete(employee.id)}>Delete</button>
+              <button onClick={() => handleEdit(product.id)}>Edit</button>
+              <button onClick={() => handleDelete(product.id)}>Delete</button>
               </td>
               </tr>
               ))}   
@@ -30,4 +38,4 @@ const ProductTable = ({ products, handleEdit, handleDelete }) => {
   );
 };
 
-export default EmployeesTable;
+export default ProductTable;

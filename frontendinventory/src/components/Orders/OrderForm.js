@@ -1,61 +1,52 @@
 import React from 'react';
 
-const ProductForm = ({ product, handleInputChange, handleSubmit, handleCancel }) => {
+const OrderForm = ({ order, handleInputChange, handleSubmit, handleCancel }) => {
   return (
     <div className="add-item-form">
-        <h2>Product Form</h2>
+        <h2>Order Form</h2>
         <form onSubmit={handleSubmit}>
           <label>
-            Category:
+            Order Quantity:
             <input type="text" 
-              name="category" 
+              name="orderQuantity" 
               autoComplete='off'
-              value={product.category} 
+              value={order.orderQuantity} 
               onChange={handleInputChange} />
           </label>
           <br />
           <label>
-            Brand:
+            Order Cost£:
             <input type="text" 
-              name="brand" 
+              name="orderCost" 
               autoComplete='off'
-              value={product.brand} 
+              value={order.orderCost} 
               onChange={handleInputChange} />
           </label>
           <br />
           <label>
-            Name:
+            Employee ID:
             <input type="text" 
-              name="name" 
+              name="employeeId" 
               autoComplete='off'
-              value={product.name} 
+              value={order.employeeId} 
               onChange={handleInputChange} />
           </label>
           <br />
           <label>
-            Size:
+            Stock ID:
             <input type="text" 
-              name="size" 
+              name="stockId" 
               autoComplete='off'
-              value={product.size} 
+              value={order.stockId} 
               onChange={handleInputChange} />
           </label>
           <br />
           <label>
-            Cost£:
-            <input type="text" 
-              name="cost" 
+            Date:
+            <input type="date" 
+              name="date" 
               autoComplete='off'
-              value={product.cost} 
-              onChange={handleInputChange} />
-          </label>
-          <br />
-          <label>
-            SupplierID:
-            <input type="text" 
-              name="supplier" 
-              autoComplete='off'
-              value={product.supplierId} 
+              value={order.date} 
               onChange={handleInputChange} />
           </label>
           <br />
@@ -68,4 +59,4 @@ const ProductForm = ({ product, handleInputChange, handleSubmit, handleCancel })
   );
 };
 
-export default ProductForm;
+export default OrderForm;

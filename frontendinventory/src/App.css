@@ -260,6 +260,35 @@ h1 {
   text-align: center;
 }
 
+/*.supplier-card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjust the minimum and maximum width of each card 
+  gap: 20px; /* Adjust the gap between cards 
+}
+
+ Responsive styling for individual cards
+.supplier-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow effect 
+  transition: transform 0.3s ease; /* Add smooth transition effect on hover 
+}
+
+.supplier-card:hover {
+  transform: translateY(-5px); /* Add a slight lift effect on hover 
+}
+
+.supllier-card img {
+  width: 100%; /* Make the image fill the entire width of the card 
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.supplier-card h3 {
+  margin: 10px;
+  font-size: 1.2rem;
+} */
+
 @media screen and (max-width: 768px) {
   .card-container {
     width: 90%; /* Adjust width for smaller screens */
@@ -273,6 +302,10 @@ h1 {
   .add-item-form {
     padding: 15px;
   }
+
+  /* .supplier-card-container {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjust the minimum and maximum width for smaller screens 
+  } */
 }
 
 @media screen and (max-width: 576px) {
@@ -302,4 +335,9 @@ h1 {
   employee-management {
     padding: 0 10px; /* Adjust padding for smaller screens */
   }
+
+  /* .supplier-card-container {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust the minimum and maximum width for even smaller screens 
+    gap: 10px; /* Reduce the gap between cards 
+  } */
 }
