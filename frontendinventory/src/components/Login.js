@@ -3,7 +3,7 @@ import useAuthorization from "../hooks/useAuthorization";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import axios from "axios";
 import { API_BASE_URL} from '../apiConfig';
-import { jwtDecode} from "jwt-decode";
+import {jwtDecode} from "jwt-decode";
 
 
 
@@ -40,19 +40,26 @@ const Login = () => {
             
 
             try {
-                const response = await axios.post(`${API_BASE_URL}account/login`, {email:email, password:password})
-                // .then((response) => {
-                //    console.log(response.data)
-                // //     //navigate('/home');
-                // })
-                console.log(JSON.stringify(response?.data));
-                const token = JSON.stringify(response?.data?.token);
+                // const response = await axios.post(`${API_BASE_URL}account/login`, {email:email, password:password})
+                // // .then((response) => {
+                // //    console.log(response.data)
+                // // //     //navigate('/home');
+                // // })
+                // console.log(JSON.stringify(response?.data));
+                // const token = JSON.stringify(response?.data?.token);
+                // const decoded = jwtDecode(token);
+                // console.log(decoded);
+                // const tokenRoles = decoded['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
+                // console.log(tokenRoles);
+                // setAuth({email, password, token, tokenRoles});
+                // navigate(from, {replace:true});
+                // console.log(token);
+                const response = await axios.post(`${API_BASE_URL}account/login`, { email, password });
+                const token = response.data.token;
                 const decoded = jwtDecode(token);
-                console.log(decoded);
                 const tokenRoles = decoded['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
-                console.log(tokenRoles);
-                setAuth({email, password, token, tokenRoles});
-                navigate(from, {replace:true});
+                setAuth({ email, token, tokenRoles });
+                navigate(from, { replace: true });
                 console.log(token);
                 
             } catch(error){

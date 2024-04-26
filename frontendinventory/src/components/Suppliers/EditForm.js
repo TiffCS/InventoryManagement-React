@@ -2,8 +2,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { API_BASE_URL } from '../../apiConfig';
+import useAuthorization from "../../hooks/useAuthorization";
 
 const EditForm = ({ supplier, onUpdate, onCancel }) => {
+    const { auth } = useAuthorization();
+
     const [formData, setFormData] = useState({
         id: supplier.id,
         name: supplier.name,
@@ -21,7 +24,11 @@ const EditForm = ({ supplier, onUpdate, onCancel }) => {
         e.preventDefault();
         try {
             // Send updated supplier details to the server
-            await axios.put(`${API_BASE_URL}Suppliers/${supplier.id}`, formData);
+            await axios.put(`${API_BASE_URL}Suppliers/${supplier.id}`, formData, {
+                headers: {
+                    Authorization: `Bearer ${auth.token}`
+                }
+            })
             // Call onUpdate function to trigger parent component update
             onUpdate(formData);
             // Reset edit mode and clear selected supplier

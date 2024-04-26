@@ -5,7 +5,7 @@ import OrderDetails from './OrderDetails';
 import OrderForm from './OrderForm';
 import OrderList from './OrderList';
 import useAuthorization from '../../hooks/useAuthorization';
-
+import {useNavigate} from 'react-router-dom';
 
 const Orders = () => {
     const {auth} = useAuthorization();
@@ -14,6 +14,8 @@ const Orders = () => {
     const [orders, setOrders] = useState([]);
     const [selectedOrder, setSelectedOrder] = useState(null);
     const [editingOrder, setEditingOrder] = useState(null);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         // Fetch students data when component mounts
@@ -45,9 +47,9 @@ const Orders = () => {
         try {
             await axios.delete(`${API_BASE_URL}Orders/${id}`, {
                 headers: {
-                    'Authorization': `Bearer ${auth.token}`
+                    Authorization: `Bearer ${auth.token}`
                 }
-            })
+            });
             fetchOrders();
         } catch (error) {
             console.error('Error deleting order:', error);
@@ -62,8 +64,15 @@ const Orders = () => {
 
     const handleAddOrder = () => {
         setSelectedOrder(null);
-        setEditingOrder({ orderQuantity: '', orderCost: '', employeeId: '', stockId: '', date: ''});
+        setEditingOrder({ 
+            orderQuantity: '', 
+            orderCost: '', 
+            employeeId: '', 
+            stockId: '', 
+            date: '' 
+        });
     };
+    
 
     const handleCancelEdit = () => {
         setEditingOrder(null);
@@ -77,20 +86,20 @@ const Orders = () => {
             if (editingOrder) {
             if (editingOrder.id) {
                 console.log('Updating existing order:', editingOrder);
-                await axios.put(`${API_BASE_URL}Orders/${editingOrder.id}`, editingOrder)/* {
+                await axios.put(`${API_BASE_URL}Orders/${editingOrder.id}`, editingOrder, {
                     headers: {
-                        'Authorization': `Bearer ${auth.token}`
+                        Authorization: `Bearer ${auth.token}`
                     }
-                })*/
+                });
             } else {
                 // Remove the existing id property for new students
                 const { id, ...newOrder } = editingOrder;
                 console.log('Creating new product:', newOrder);
-                await axios.post(`${API_BASE_URL}Orders`, newOrder) /* {
-                        headers: {
-                            'Authorization': `Bearer ${auth.token}`
-                        }
-                })*/
+                await axios.post(`${API_BASE_URL}Orders`, newOrder , {
+                    headers: {
+                        Authorization: `Bearer ${auth.token}`
+                    }
+                });
             }
             fetchOrders();
             }
@@ -108,6 +117,7 @@ const Orders = () => {
   return (
     <div className="employee-manangement">
         <div className = "employee-form">
+        <button onClick={() => navigate('/users')} className="back-button">Back to Users</button>
             <OrderList orders={orders} handleEdit={handleEdit} handleDelete={handleDelete} />
             {selectedOrder && <OrderDetails order={selectedOrder} />}
             {editingOrder && (

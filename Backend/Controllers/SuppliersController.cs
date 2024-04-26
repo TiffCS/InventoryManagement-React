@@ -46,7 +46,8 @@ namespace InventoryManagement.Controllers
         // PUT: api/Suppliers/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        
+        [Authorize(Roles="Admin")]
+        [Authorize(Roles="Purchasing")]
         public async Task<IActionResult> PutSupplier(int id, Supplier supplier)
         {
             if (id != supplier.Id)
@@ -78,7 +79,8 @@ namespace InventoryManagement.Controllers
         // POST: api/Suppliers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        
+        [Authorize(Roles="Admin")]
+        [Authorize(Roles="Purchasing")]
         public async Task<ActionResult<Supplier>> PostSupplier(Supplier supplier)
         {
             _context.Suppliers.Add(supplier);
@@ -89,7 +91,8 @@ namespace InventoryManagement.Controllers
 
         // DELETE: api/Suppliers/5
         [HttpDelete("{id}")]
-        
+        [Authorize(Roles="Admin")]
+        [Authorize(Roles="Purchasing")]
         public async Task<IActionResult> DeleteSupplier(int id)
         {
             var supplier = await _context.Suppliers.FindAsync(id);

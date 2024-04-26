@@ -5,7 +5,7 @@ import ProductDetails from './ProductDetails';
 import ProductForm from './ProductForm';
 import ProductList from './ProductList';
 import useAuthorization from '../../hooks/useAuthorization';
-
+import { useNavigate } from 'react-router-dom';
 
 const Products = () => {
     const {auth} = useAuthorization();
@@ -14,6 +14,7 @@ const Products = () => {
     const [products, setProducts] = useState([]);
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [editingProduct, setEditingProduct] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         // Fetch students data when component mounts
@@ -46,9 +47,9 @@ const Products = () => {
         try {
             await axios.delete(`${API_BASE_URL}Products/${id}`, {
                 headers: {
-                    'Authorization': `Bearer ${auth.token}`
+                    Authorization: `Bearer ${auth.token}`
                 }
-            })
+            });
             fetchProducts();
         } catch (error) {
             console.error('Error deleting product:', error);
@@ -78,20 +79,20 @@ const Products = () => {
             if (editingProduct) {
             if (editingProduct.id) {
                 console.log('Updating existing product:', editingProduct);
-                await axios.put(`${API_BASE_URL}Products/${editingProduct.id}`, editingProduct)/* {
+                await axios.put(`${API_BASE_URL}Products/${editingProduct.id}`, editingProduct, {
                     headers: {
-                        'Authorization': `Bearer ${auth.token}`
+                        Authorization: `Bearer ${auth.token}`
                     }
-                })*/
+                });
             } else {
                 // Remove the existing id property for new students
                 const { id, ...newProduct } = editingProduct;
                 console.log('Creating new product:', newProduct);
-                await axios.post(`${API_BASE_URL}Products`, newProduct) /* {
-                        headers: {
-                            'Authorization': `Bearer ${auth.token}`
-                        }
-                })*/
+                await axios.post(`${API_BASE_URL}Products`, newProduct, {
+                    headers: {
+                        Authorization: `Bearer ${auth.token}`
+                    }
+                });
             }
             fetchProducts();
             }
@@ -109,6 +110,7 @@ const Products = () => {
   return (
     <div className="employee-manangement">
         <div className = "employee-form">
+            <button onClick={() => navigate('/users')} className="back-button">Back to Users</button>
             <ProductList products={products} handleEdit={handleEdit} handleDelete={handleDelete} />
             {selectedProduct && <ProductDetails product={selectedProduct} />}
             {editingProduct && (

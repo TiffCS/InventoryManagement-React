@@ -46,6 +46,7 @@ namespace InventoryManagement.Controllers
         // PUT: api/Stocks/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize(Roles="Admin,Inventory")]
         
         public async Task<IActionResult> PutStock(int id, Stock stock)
         {
@@ -78,7 +79,7 @@ namespace InventoryManagement.Controllers
         // POST: api/Stocks
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        
+        [Authorize(Roles="Admin,Inventory")]
         public async Task<ActionResult<Stock>> PostStock(Stock stock)
         {
             _context.Stocks.Add(stock);
@@ -89,7 +90,7 @@ namespace InventoryManagement.Controllers
 
         // DELETE: api/Stocks/5
         [HttpDelete("{id}")]
-        
+        [Authorize(Roles="Admin,Inventory")]
         public async Task<IActionResult> DeleteStock(int id)
         {
             var stock = await _context.Stocks.FindAsync(id);

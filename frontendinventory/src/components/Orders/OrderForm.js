@@ -8,6 +8,7 @@ const OrderForm = ({ order, handleInputChange, handleSubmit, handleCancel }) => 
           <label>
             Order Quantity:
             <input type="text" 
+              required
               name="orderQuantity" 
               autoComplete='off'
               value={order.orderQuantity} 
@@ -17,6 +18,7 @@ const OrderForm = ({ order, handleInputChange, handleSubmit, handleCancel }) => 
           <label>
             Order Cost£:
             <input type="text" 
+              required
               name="orderCost" 
               autoComplete='off'
               value={order.orderCost} 
@@ -26,6 +28,7 @@ const OrderForm = ({ order, handleInputChange, handleSubmit, handleCancel }) => 
           <label>
             Employee ID:
             <input type="text" 
+              required
               name="employeeId" 
               autoComplete='off'
               value={order.employeeId} 
@@ -35,6 +38,7 @@ const OrderForm = ({ order, handleInputChange, handleSubmit, handleCancel }) => 
           <label>
             Stock ID:
             <input type="text" 
+              required
               name="stockId" 
               autoComplete='off'
               value={order.stockId} 
@@ -44,6 +48,7 @@ const OrderForm = ({ order, handleInputChange, handleSubmit, handleCancel }) => 
           <label>
             Date:
             <input type="date" 
+              required
               name="date" 
               autoComplete='off'
               value={order.date} 

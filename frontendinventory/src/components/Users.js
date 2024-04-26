@@ -5,6 +5,7 @@ import inventoryLogo from "./logos/inventoryLogo.jpeg";
 import ordersLogo from "./logos/ordersLogo.jpeg";
 import productsLogo from "./logos/productsLogo.jpeg";
 import suppliersLogo from "./logos/suppliersLogo.jpeg";
+import usersLogo from "./logos/usersLogo.jpeg";
 
 const Users = () => {
 
@@ -56,6 +57,14 @@ const Users = () => {
                         This section is for all suppliers in the system.
                     </p>
                     <button onClick={() => navigate("/supplier")}className="card-btn">Click Here</button>
+                </div>
+                <div className="card-container">
+                    <img src={usersLogo} alt="suppliers logo" className="card-img" />
+                    <h1 className="card-title">Admin</h1>
+                    <p className="card-description">
+                        Admin Page
+                    </p>
+                    <button onClick={() => navigate("/admin")}className="card-btn">Click Here</button>
                 </div>
             </div>
         </div>
