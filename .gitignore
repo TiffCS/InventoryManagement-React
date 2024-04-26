@@ -1,3 +1,7 @@
 
 
 /appsettings.json
+/Backend/appsettings.json
+/Backend/obj
+/Backend/bin
+/.vscode
