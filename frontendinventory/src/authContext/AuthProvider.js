@@ -10,11 +10,22 @@ export const AuthProvider = ({children}) => {
         tokenRoles: null
     });
 
+    // Function to clear authentication state (logout)
+    const logout = () => {
+        setAuth({
+            email: null,
+            password: null,
+            token: null,
+            tokenRoles: null
+        });
+    };
+
     return (
-        <AuthContext.Provider value={{ auth, setAuth }}>
+        <AuthContext.Provider value={{ auth, setAuth, logout }}>
             {children}
         </AuthContext.Provider>
     );
 }
 
 export default AuthContext;
+
