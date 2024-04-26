@@ -5,6 +5,7 @@ import EmployeeDetails from './EmployeeDetails';
 import EmployeeList from './EmployeeList';
 import EmployeeForm from './EmployeeForm';
 import useAuthorization from '../../hooks/useAuthorization';
+import { useNavigate } from 'react-router-dom';
 
 const Employees = () => {
     const {auth} = useAuthorization();
@@ -13,6 +14,8 @@ const Employees = () => {
     const [employees, setEmployees] = useState([]);
     const [selectedEmployee, setSelectedEmployee] = useState(null);
     const [editingEmployee, setEditingEmployee] = useState(null);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         // Fetch students data when component mounts
@@ -44,9 +47,9 @@ const Employees = () => {
         try {
             await axios.delete(`${API_BASE_URL}Employees/${id}`, {
                 headers: {
-                    'Authorization': `Bearer ${auth.token}`
+                    Authorization: `Bearer ${auth.token}`
                 }
-            })
+            });
             fetchEmployees();
         } catch (error) {
             console.error('Error deleting employee:', error);
@@ -76,20 +79,20 @@ const Employees = () => {
             if (editingEmployee) {
             if (editingEmployee.id) {
                 console.log('Updating existing employee:', editingEmployee);
-                await axios.put(`${API_BASE_URL}Employees/${editingEmployee.id}`, editingEmployee)/* {
+                await axios.put(`${API_BASE_URL}Employees/${editingEmployee.id}`, editingEmployee, {
                     headers: {
-                        'Authorization': `Bearer ${auth.token}`
+                        Authorization: `Bearer ${auth.token}`
                     }
-                })*/
+                });
             } else {
                 // Remove the existing id property for new students
                 const { id, ...newEmployee } = editingEmployee;
                 console.log('Creating new employee:', newEmployee);
-                await axios.post(`${API_BASE_URL}Employees`, newEmployee) /* {
-                        headers: {
-                            'Authorization': `Bearer ${auth.token}`
-                        }
-                })*/
+                await axios.post(`${API_BASE_URL}Employees`, newEmployee, {
+                    headers: {
+                        Authorization: `Bearer ${auth.token}`
+                    }
+                });
             }
             fetchEmployees();
             }
@@ -107,6 +110,7 @@ const Employees = () => {
   return (
     <div className="employee-manangement">
         <div className = "employee-form">
+        <button onClick={() => navigate('/admin')} className="back-button">Back to Admin</button>
             <EmployeeList employees={employees} handleEdit={handleEdit} handleDelete={handleDelete} />
             {selectedEmployee && <EmployeeDetails employee={selectedEmployee} />}
             {editingEmployee && (

@@ -34,15 +34,15 @@ function App() {
             <Route element={<RequireAuth allowedRoles={["Admin"]} />}>
               <Route path="admin" element={<Admin/>}/>
               <Route path="employee" element={<Employees/>}/>
+            </Route>
+            <Route element={<RequireAuth allowedRoles={["Purchasing", "Inventory", "Admin"]} />}>
+              <Route path="users" element={<Users/>}/>
               <Route path="product" element={<Products/>}/>
               <Route path="stock" element={<Stocks/>}/>
               <Route path="order" element={<Orders/>}/>
               <Route path="supplier" element={<Suppliers/>}/>
               <Route path="/supplier/:id" element={<SupplierDetails />} />
               <Route path = "/supplier/add" element = {<AddSupplierForm/>}/>
-            </Route>
-            <Route element={<RequireAuth allowedRoles={["Admin","Purchasing","Inventory"]} />}>
-              <Route path="users" element={<Users/>}/>
             </Route>
           </Route>
         </Routes>

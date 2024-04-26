@@ -1,13 +1,15 @@
 import React from 'react';
 
-const StockForm = ({ stock, handleInputChange, handleSubmit, handleCancel }) => {
+const StockForm = ({ stock, handleInputChange, handleSubmit, handleCancel, errorMessage }) => {
   return (
     <div className="add-item-form">
         <h2>Stock Form</h2>
+        {errorMessage && <div className="error-message">{errorMessage}</div>}
         <form onSubmit={handleSubmit}>
           <label>
             Quantity Available:
-            <input type="text" 
+            <input type="text"
+              required 
               name="quantityAvailable" 
               autoComplete='off'
               value={stock.quantityAvailable} 
@@ -17,6 +19,7 @@ const StockForm = ({ stock, handleInputChange, handleSubmit, handleCancel }) => 
           <label>
             Reorder Quantity:
             <input type="text" 
+              required
               name="reorderQuantity" 
               autoComplete='off'
               value={stock.reorderQuantity} 
@@ -25,7 +28,8 @@ const StockForm = ({ stock, handleInputChange, handleSubmit, handleCancel }) => 
           <br />
           <label>
             Product ID:
-            <input type="text" 
+            <input type="text"
+              required 
               name="productId" 
               autoComplete='off'
               value={stock.productId} 
@@ -42,3 +46,4 @@ const StockForm = ({ stock, handleInputChange, handleSubmit, handleCancel }) => 
 };
 
 export default StockForm;
+

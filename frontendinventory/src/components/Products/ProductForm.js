@@ -7,7 +7,8 @@ const ProductForm = ({ product, handleInputChange, handleSubmit, handleCancel })
         <form onSubmit={handleSubmit}>
           <label>
             Category:
-            <input type="text" 
+            <input type="text"
+              required 
               name="category" 
               autoComplete='off'
               value={product.category} 
@@ -16,7 +17,8 @@ const ProductForm = ({ product, handleInputChange, handleSubmit, handleCancel })
           <br />
           <label>
             Brand:
-            <input type="text" 
+            <input type="text"
+              required 
               name="brand" 
               autoComplete='off'
               value={product.brand} 
@@ -26,6 +28,7 @@ const ProductForm = ({ product, handleInputChange, handleSubmit, handleCancel })
           <label>
             Name:
             <input type="text" 
+              required
               name="name" 
               autoComplete='off'
               value={product.name} 
@@ -35,6 +38,7 @@ const ProductForm = ({ product, handleInputChange, handleSubmit, handleCancel })
           <label>
             Size:
             <input type="text" 
+              required
               name="size" 
               autoComplete='off'
               value={product.size} 
@@ -43,17 +47,19 @@ const ProductForm = ({ product, handleInputChange, handleSubmit, handleCancel })
           <br />
           <label>
             Cost£:
-            <input type="text" 
-              name="cost" 
+            <input type="text"
+              required
+              name="unitCost" 
               autoComplete='off'
-              value={product.cost} 
+              value={product.unitCost} 
               onChange={handleInputChange} />
           </label>
           <br />
           <label>
             SupplierID:
             <input type="text" 
-              name="supplier" 
+              required
+              name="supplierId" 
               autoComplete='off'
               value={product.supplierId} 
               onChange={handleInputChange} />

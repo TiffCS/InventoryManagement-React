@@ -7,7 +7,8 @@ const EmployeeForm = ({ employee, handleInputChange, handleSubmit, handleCancel 
         <form onSubmit={handleSubmit}>
           <label>
             Name:
-            <input type="text" 
+            <input type="text"
+              required 
               name="name" 
               autoComplete='off'
               value={employee.name} 
@@ -16,7 +17,8 @@ const EmployeeForm = ({ employee, handleInputChange, handleSubmit, handleCancel 
           <br />
           <label>
             Email:
-            <input type="email" 
+            <input type="email"
+              required
               name="email" 
               autoComplete='off'
               value={employee.email} 

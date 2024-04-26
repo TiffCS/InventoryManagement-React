@@ -46,7 +46,7 @@ namespace InventoryManagement.Controllers
         // PUT: api/Employees/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-       
+        [Authorize(Roles="Admin")]
         public async Task<IActionResult> PutEmployee(int id, Employee employee)
         {
             if (id != employee.Id)
@@ -78,7 +78,7 @@ namespace InventoryManagement.Controllers
         // POST: api/Employees
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-    
+        [Authorize(Roles="Admin")]
         public async Task<ActionResult<Employee>> PostEmployee(Employee employee)
         {
             _context.Employees.Add(employee);
@@ -89,6 +89,7 @@ namespace InventoryManagement.Controllers
 
         // DELETE: api/Employees/5
         [HttpDelete("{id}")]
+        [Authorize(Roles="Admin")]
         public async Task<IActionResult> DeleteEmployee(int id)
         {
             var employee = await _context.Employees.FindAsync(id);

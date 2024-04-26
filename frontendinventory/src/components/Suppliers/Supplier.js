@@ -1,12 +1,13 @@
-// Suppliers.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { API_BASE_URL } from '../../apiConfig';
 import supplierLogo from '../logos/supplierLogo.jpeg';
 import { Link, useNavigate } from 'react-router-dom';
 import EditForm from './EditForm';
+import useAuthorization from "../../hooks/useAuthorization";
 
 const Suppliers = () => {
+    const { auth } = useAuthorization();
     const [data, setData] = useState([]);
     const [editMode, setEditMode] = useState(false);
     const [selectedSupplier, setSelectedSupplier] = useState(null);
@@ -44,9 +45,17 @@ const Suppliers = () => {
         navigate('/supplier/add');  // Use navigate function to navigate to the specified route
     };
 
+    const handleGoToUsers = () => {
+        navigate('/users');  // Navigate to the users section
+    };
+
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`${API_BASE_URL}Suppliers/${id}`);
+            await axios.delete(`${API_BASE_URL}Suppliers/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${auth.token}`
+                }
+            });
             setData(data.filter(supplier => supplier.id !== id)); // Remove the deleted supplier from the data state
         } catch (error) {
             console.error('Error deleting supplier:', error);
@@ -56,7 +65,10 @@ const Suppliers = () => {
 
     return (
         <div className="mt-3 text-center">
-            <button className="btn btn-danger btn-md rounded-pill mb-3" onClick={handleAddSupplierClick}>Add Supplier</button>
+            <div className="d-flex justify-content-between align-items-center mb-3">
+                <button className="btn btn-dark btn-square" onClick={handleGoToUsers}>User Page</button>
+                <button className="btn btn-dark btn-square" onClick={handleAddSupplierClick}>Add Supplier</button>
+            </div>
             <div className="row g-2 bg-primary bg-opacity-10 rounded-2">
                 {data.length > 0 && data.map((item, index) => (
                     <div key={index} className="col-sm-6 col-lg-4">
